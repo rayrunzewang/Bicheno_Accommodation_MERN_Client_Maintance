@@ -1,0 +1,28 @@
+.login {
+  color: var(--light-blue);
+  margin: 200px auto 0;
+  text-align: center;
+  border: 1px solid var(--light-blue);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px var(--light-blue);
+}
+
+.login div {
+  margin-top: 5px;
+}
+
+.login-button {
+  color: #fff;
+  background: var(--light-blue);
+}
+
+.login-button:hover {
+  background-color: var(--primary-color);
+}
+
+.login-button:active {
+  transform: translate(1px, 2px);
+}

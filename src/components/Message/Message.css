@@ -1,0 +1,29 @@
+.custom-message {
+    font-size: var(--font-size-small);
+    color: var(--text-color);
+    background: #fff;
+    width:fit-content;
+    max-width: 400px;
+    height: fit-content;
+    padding: 20px 40px;
+    border: 1px var(--text-color) solid;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 5px 5px 10px var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.message-button {
+    width: fit-content;
+    margin: 0px auto;
+}

@@ -1,0 +1,45 @@
+.floating-box {
+    position: fixed;
+    bottom: 5%;
+    right: 0;
+    z-index: 1020;
+}
+
+.floating-box-contact{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 5px 10px;
+    margin-bottom:10px;
+    background-color: var(--light-grey);
+    opacity: 0.8;
+    font-size: var(--font-size-small);
+    box-shadow: 2px 2px 5px var(--dark-blue);
+}
+
+.floating-box-contact-title {
+    margin-bottom: 5px;
+}
+
+.floating-box-phone {
+    margin-bottom: 2px;
+    display: block;
+}
+
+.floating-box-book-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    background: var(--primary-color);
+    font-size: var(--font-size-small);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 10px 0;
+    transition: 0.5s;
+    box-shadow: 2px 2px 5px var(--dark-blue);
+}
+
+.floating-box-book-btn:hover {
+    color: var(--light-grey);
+    background-color:var(--dark-blue);
+}

@@ -1,0 +1,36 @@
+.account-edit-container {
+    width: 80%;
+    margin: 20px auto 10px;
+    background: var(--grey);
+    border: 1px var(--grey) solid;
+    border-radius: 10px;
+}
+
+.account-edit-form {
+    padding: 20px;
+    margin: 50px auto 50px;
+    width: fit-content;
+    border: 1px #fff solid;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.account-edit-container label,
+input {
+    display: block;
+    margin: 10px auto 0;
+}
+
+#account-edit-username {
+    border: none;
+    color: var(--grey);
+    cursor: not-allowed;
+}
+
+.match-text {
+    color: green;
+}
+
+.no-match-text {
+    color: red;
+}

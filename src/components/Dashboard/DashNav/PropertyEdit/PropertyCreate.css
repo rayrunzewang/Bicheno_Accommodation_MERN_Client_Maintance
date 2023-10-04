@@ -1,0 +1,140 @@
+.property-create-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+    height: 500px;
+    overflow: auto;
+}
+
+.property-create-container h1 {
+    margin: 10px auto;
+}
+
+.property-create-form {
+    width: 90%;
+    min-width: 400px;
+}
+
+.property-create-facilities {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.property-create-facilities * {
+    margin-right: 10px;
+}
+
+.property-create-bed {
+    width: 60px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 0px;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.property-create-toliet {
+    width: 60px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 0px;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.property-create-carspace {
+    width: 60px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 0px;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.images-upload-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: black;
+    border: 2px dashed #ccc;
+    width: 40%;
+    height: 100px;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.images-selected-area-description {
+    margin: 10px 0;
+}
+
+.images-selected-area {
+    margin: 10px 0;
+    overflow: auto;
+    height: fit-content;
+    max-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.image-div {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.image-div:hover {
+    cursor: pointer;
+}
+
+.images-selected-image {
+    height: 80px;
+}
+
+.images-selected-image-delete {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px auto;
+    color: black;
+    border-radius: 0px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background: #fff;
+    opacity: 0.5;
+}
+
+.images-selected-image-delete:hover {
+    opacity: 1;
+}
+
+.property-title-input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.property-address-input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.property-description {
+    width: 100%;
+    margin: 10px 0;
+    resize: none;
+}
+
+.property-link {
+    width: 100%;
+    margin: 10px 0;
+    resize: none;
+}
+

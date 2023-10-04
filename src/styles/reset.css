@@ -1,0 +1,86 @@
+/* Reset CSS */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: var(--font-size-small);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff; 
+}
+
+ul, ol {
+  list-style: none; 
+}
+
+a {
+  text-decoration: none; 
+  color: inherit; 
+}
+
+em {
+    font-style: normal;
+}
+
+label.required-input::after {
+  content: "*";
+  color: red;
+}
+
+.success-message {
+  color: var(--sucess-message);
+}
+
+.fail-message {
+  color: var(--fail-message);
+}
+
+button, input {
+  border: none; 
+  outline: none; 
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+input, textarea {
+  white-space: pre-wrap !important;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus,textarea:focus {
+  border: 2px solid #3498db; 
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); 
+}
+
+button {
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+}

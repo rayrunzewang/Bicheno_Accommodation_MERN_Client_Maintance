@@ -1,0 +1,143 @@
+.property-edit-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+    height: 500px;
+    overflow: auto;
+}
+
+.property-edit-container h1 {
+    margin: 10px auto;
+}
+
+.property-edit-form {
+    width: 90%;
+    min-width: 400px;
+}
+
+.property-edit-title {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.property-edit-facilities {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.property-edit-facilities * {
+    margin-right: 10px;
+}
+
+.property-edit-bed {
+    width: 60px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 0px;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.property-edit-toliet {
+    width: 60px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 0px;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.property-edit-carspace {
+    width: 60px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 0px;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+}
+
+.property-edit-address {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.property-edit-description {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.images-edit-upload-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: black;
+    border: 2px dashed #ccc;
+    width: 40%;
+    height: 100px;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.images-edit-selected-area-description {
+    margin: 10px 0;
+}
+
+.images-edit-selected-area {
+    margin: 10px 0;
+    overflow: auto;
+    width: 100%;
+    height: fit-content;
+    max-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.image-edit-div {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.images-edit-selected-image {
+    height: 80px;
+}
+
+.images-edit-selected-image-delete {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px auto;
+    color: black;
+    border-radius: 0px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background: #fff;
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.property-edit-link {
+    width: 100%;
+    margin: 10px 0;
+    resize: none;
+}
+

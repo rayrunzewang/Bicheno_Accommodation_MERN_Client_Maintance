@@ -1,0 +1,197 @@
+/* ------ header ------ */
+.page-header {
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding-inline: 0 5%;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.page-header.scrolling {
+  height: 30px;
+}
+
+.page-header.scrolling .nav-logo {
+  display: none;
+}
+
+.page-header .logo-container {
+  margin-right: 50px;
+  width: 30%;
+  min-width: 80px;
+  overflow: hidden;
+}
+
+/* ------ nav ------ */
+.nav-logo {
+  height: 80px;
+  display: block;
+}
+
+nav {
+  width: 60%;
+}
+
+.page-header nav .user-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-header nav .user-container li {
+  font-size: var(--font-size-medium);
+  list-style-type: none;
+}
+
+.page-header nav .user-container li .nav-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 50px;
+  transition: all 0.5s;
+}
+
+.page-header nav .user-container li .nav-link:hover {
+  color: var(--light-grey);
+  text-decoration: underline;
+}
+
+.page-header nav .user-container li .nav-link.active {
+  color: var(--light-grey);
+  text-decoration: underline 2px var(--light-grey);
+}
+
+/* ------ small screen nav. hiddern ----- */
+.nav-phone-screen {
+  display: none;
+}
+
+/* ------ small screen imgBg. hiddern ------ */
+.image-background-phone-screen {
+  display: none;
+}
+
+.home-background-image {
+  width: 100%;
+}
+
+/* ------ small screen toogle hiddern ----- */
+.menu-toggle-button {
+  display: none;
+}
+
+/* ------ medium screen layout ------ */
+@media (max-width: 992px) {
+
+  /* ------ medium screen header layout ----- */
+  .page-header {
+    padding-inline: 0;
+    height: 60px;
+  }
+
+  /* ------ medium screen logo layout ----- */
+  .page-header .logo-container {
+    height: 60px;
+    margin-right: 10px;
+    width: 30%;
+    min-width: 80px;
+    overflow: hidden;
+  }
+
+  .nav-logo {
+    height: 60px;
+    display: block;
+  }
+
+  /* ------ medium screen nav layout ----- */
+  nav {
+    width: 70%;
+  }
+
+  .page-header nav .user-container li .nav-link {
+    margin-right: 10px;
+  }
+}
+
+/* ------ small Screen screen layout ------ */
+@media (max-width: 576px) {
+  .page-header {
+    display: none;
+  }
+
+  /* ------ Small Screen Menu layout ------ */
+  .nav-phone-screen-container {
+    z-index: 1;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    overflow: hidden;
+  }
+
+  .nav-phone-screen {
+    background-color: rgba(70, 70, 70, 0.9);
+    display: block;
+    width: 250px;
+    height: fit-content;
+    left: auto;
+    z-index: 1;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    transition: all 0.4s ease;
+    opacity: 0.5;
+  }
+
+  .nav-phone-screen.hidden {
+    transform: translateX(110%);
+    opacity: 0.2;
+  }
+
+  .nav-phone-screen:not(.hidden) {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  .nav-phone-screen .phone-screen-link {
+    color: white;
+  }
+
+  .nav-phone-screen li {
+    font-size: var(--font-size-large);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .nav-phone-screen .phone-screen-link.active {
+    color: white;
+    text-decoration: underline 2px white;
+  }
+
+  /* ------ small screen menu toggle button ------ */
+  .menu-toggle-button {
+    font-size: var(--font-size-xLarge);
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 10px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--primary-color);
+  }
+
+  /* ------ small screen imgBG layout ------ */
+  .image-background-phone-screen {
+    display: block;
+  }
+}

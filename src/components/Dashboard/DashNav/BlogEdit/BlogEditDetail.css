@@ -1,0 +1,33 @@
+.blog-edit-detail {
+    width: 70%;
+    margin: 0 auto;
+    height: 500px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.blog-edit-detail-form{
+    width: 500px;
+}
+
+.submit-post-button {
+    margin-top: 10px;
+    background: rgb(95, 166, 194);
+    color: #fff;
+    padding: 10px 20px;
+    display: block;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.delete-post-button {
+    margin-top: 10px;
+    background: rgb(95, 166, 194);
+    color: #fff;
+    padding: 10px 20px;
+    display: block;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+

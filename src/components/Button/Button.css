@@ -1,0 +1,9 @@
+.custom-button {
+    margin-top: 10px;
+    background: var(--light-blue);
+    color: #fff;
+    padding: 10px 20px;
+    display: block;
+    width: fit-content;
+    border-radius: 5px;
+}
