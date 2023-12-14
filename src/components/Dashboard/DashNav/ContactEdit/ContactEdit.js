@@ -85,11 +85,10 @@ const ContactEdit = () => {
         setIsSaved(true);
         setIsError(false);
       } else {
-        setIsError(true);
         console.error('Failed to submit data');
       }
     } catch (error) {
-      setIsError(true);
+      setIsError(true);//try test contactEdit
       console.error('Error:', error);
     }
   };

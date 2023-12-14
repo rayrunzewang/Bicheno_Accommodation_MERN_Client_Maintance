@@ -6,15 +6,28 @@ import jsPDF from 'jspdf';
 import { getPdfComponentContent } from './PdfComponent';
 import './PropertyPage.css';
 
-const PropertyPage = (props) => {//props
+const PropertyPage = (props) => {
+    const [property, setProperty] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [slides, setSlides] = useState('');
+    const [link, setLink] = useState('');
+    const id = props.property._id
+    
     const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-    const property = props.property;
+    useState(() => {
+        fetch(`${BASE_URL}/property/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setProperty(data)
+                setSlides(data.images);
+                setLink(data.link);
+                console.log(data.link);
+            })
+            .catch(error => console.error('Properties Fetch Error:', error))
+    }, []);
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    console.log(currentIndex);
-    const slides = props.property.images;
-    console.log(props)
+    // console.log(props)
 
     const handleSlideChange = (newIndex) => {
         setCurrentIndex(newIndex);
@@ -108,7 +121,7 @@ const PropertyPage = (props) => {//props
     //         console.error('Error:', error);
     //     }
     // };
-    if(!property) {
+    if (!property) {
         return <div>Data Loading...</div>
     }
     return (
@@ -119,10 +132,12 @@ const PropertyPage = (props) => {//props
                 <p className='property-detail-address'>{property.address}</p>
 
                 <div className='property-detial-image-container'>
-                    <div
-                        style={{ backgroundImage: `url(${slides[currentIndex].image_url})` }}
+                    {slides && <div
+                        style={{ backgroundImage: `url(${property.images[currentIndex].image_url})` }}
                         className='property-detail-image'>
                     </div>
+                    }
+                    {slides &&
                     <div
                         className='property-detial-image-left-arrow'
                         onClick={() => handleSlideChange((currentIndex - 1 + slides.length) % slides.length)}
@@ -130,6 +145,8 @@ const PropertyPage = (props) => {//props
                     >
                         <BsChevronCompactLeft />
                     </div>
+                    }
+                    {slides &&
                     <div
                         className='property-detial-image-right-arrow'
                         onClick={() => handleSlideChange((currentIndex + 1) % slides.length)}
@@ -137,6 +154,7 @@ const PropertyPage = (props) => {//props
                     >
                         <BsChevronCompactRight />
                     </div>
+                    }
 
                     <div className='property-detial-image-nav'>
                         {slides && slides.length > 0 && slides.map((slide, slideIndex) => (
@@ -153,7 +171,7 @@ const PropertyPage = (props) => {//props
                 <div className='property-detail-button'>
                     <button onClick={generatePDF} type="button">Export PDF</button>
                     <div className='property-detail-book-btn'>
-                        <a className='property-detail-book-link' target='_blank' href={property.link}>Book Now</a>
+                        <a className='property-detail-book-link' target='_blank' href={link}>Book Now</a>
                     </div>
                 </div>
                 <div className='property-detail-facilities-container'>
@@ -162,7 +180,6 @@ const PropertyPage = (props) => {//props
                 <div className='property-detail-description-container'>
                     <pre className='property-detail-content'>{property.description}</pre>
                 </div>
-
             </div>
 
         </>

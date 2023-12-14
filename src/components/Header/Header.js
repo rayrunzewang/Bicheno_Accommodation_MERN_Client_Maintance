@@ -46,7 +46,7 @@ const Header = () => {
     }, []);
 
     useState(() => {
-        fetch(`${BASE_URL}/property`)
+        fetch(`${BASE_URL}/property/alltitle`)
             .then(res => res.json())
             .then(data => setProperties(data.properties))
             .catch(error => console.error('Properties Fetch Error:', error))
@@ -65,12 +65,12 @@ const Header = () => {
                         <li><NavLink className='nav-link' to='/'>Home</NavLink></li>
                         <li><NavLink className='nav-link' to='/public/blog'>Blog</NavLink></li>
                         <li><NavLink className='nav-link' to='/public/accommodation'>Accommodation</NavLink></li>
-                        <li><a
+                        {/* <li><a
                             className='nav-link'
                             href='https://bookings8.rmscloud.com/Search/Index/f1e238f9670c6dcf/1/'
                             target='_blank'
                             rel='noopener noreferrer'
-                        >Booking</a></li>
+                        >Booking</a></li> */}
                     </ul>
                 </nav>
             </header>
@@ -87,13 +87,13 @@ const Header = () => {
                         <li><NavLink className='phone-screen-link' onClick={toggleNavVisibility} to='/'>Home</NavLink></li>
                         <li><NavLink className='phone-screen-link' onClick={toggleNavVisibility} to='/public/blog'>Blog</NavLink></li>
                         <li><NavLink className='phone-screen-link' onClick={toggleNavVisibility} to='/public/accommodation'>Accommodation</NavLink></li>
-                        <li><a
+                        {/* <li><a
                             onClick={toggleNavVisibility}
                             className='phone-screen-link'
                             href='https://bookings8.rmscloud.com/Search/Index/f1e238f9670c6dcf/1/'
                             target='_blank'
                             rel='noopener noreferrer'
-                        >Booking</a></li>
+                        >Booking</a></li> */}
                     </ul>
                 </div>
             </div>

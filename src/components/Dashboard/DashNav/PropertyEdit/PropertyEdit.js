@@ -10,7 +10,7 @@ const PropertyEdit = () => {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/property`)
+    fetch(`${BASE_URL}/property/alltitle`)
       .then(res => res.json())
       .then(data => setProperties(data.properties))
       .catch(error => console.error('error:', error));
@@ -32,7 +32,7 @@ const PropertyEdit = () => {
                   </li>
                 ))
               ) : (
-                <p>No Accommodation Available</p>
+                <p>Loading Data...</p>
               )}
             </ul>
           </div>

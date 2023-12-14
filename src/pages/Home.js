@@ -34,19 +34,6 @@ function Home() {
         getProperties();
     }, [])
 
-    useEffect(() => {
-        if (properties.length > 0) {
-            setSlides(properties);
-            console.log(properties[0].images[0].image_url);
-        }
-    }, [properties]);
-
-    useEffect(() => {
-        if (slides.length > 0) {
-            console.log(slides[0]);
-        }
-    }, [slides]);
-
     /* ------ Fetch contact information ------ */
     const getContact = () => {
         fetch(`${BASE_URL}/contact`, { credentials: 'include' })
@@ -57,10 +44,10 @@ function Home() {
 
     /* ------ Fetch properties information ------ */
     const getProperties = () => {
-        fetch(`${BASE_URL}/property`, { credentials: 'include' })
+        fetch(`${BASE_URL}/property/propertycard`, { credentials: 'include' })
             .then((res) => res.json())
             .then((data) => {
-                setProperties(data.properties); // Update to access 'properties' field in response
+                setSlides(data.properties); // Update to access 'properties' field in response
             })
             .catch((error) => console.error('Properties Fetch Error:', error));
     };
@@ -116,13 +103,18 @@ function Home() {
         }
     };
 
+    /* shoud video load */
+    const shouldDisplayVideo = window.innerWidth > 576;
+
     return (
         <div>
             {/* ------ Video Background ------ */}
             <div className='home-video-container'>
-                <video autoPlay loop muted playsinline className='home-video' >
-                    <source src={videoBg} type='video/mp4' />
-                </video>
+                {shouldDisplayVideo && (
+                    <video autoPlay loop muted playsInline className='home-video'>
+                        <source src={videoBg} type='video/mp4' />
+                    </video>
+                )}
             </div>
 
             {/* ------ Social Media Icons ------ */}
@@ -174,16 +166,21 @@ function Home() {
                 <div className='home-carousel-container'>
                     <h2 className='home-carousel-title'>Our Accommodation</h2>
 
-                    {slides && slides.length > 0 ? (
-                    <div className='home-carousel-image-container'>
-                        {slides && slides.length > 0 &&
-                            <Link className='home-carousel-image-link' to={`/public/${slides[currentIndex]._id}`} >
-                                <div
-                                    style={{ backgroundImage: `url(${slides[currentIndex].images[0].image_url})` }}
-                                    className='home-carousel-image'>
-                                </div>
-                            </Link>
-                        }
+                    <div className='home-carousel-content'>
+                        <div className='home-carousel-image-container'>
+                            {slides && slides.length > 0 ? (
+                                <Link className='home-carousel-image-link' to={`/public/${slides[currentIndex]._id}`} >
+                                    <div
+                                        style={{ backgroundImage: `url(${
+                                            `data:${slides[currentIndex].image_contentType};base64,${slides[currentIndex].image_data}`
+                                        
+                                        })` }}
+                                        className='home-carousel-image'>
+                                    </div>
+                                </Link>
+                            )
+                                : (<p className='home-carousel-loading'>Loading...</p>)}
+                        </div>
 
                         {slides && slides.length > 0 && <div className='home-carousel-image-left-arrow' onClick={() => handleSlideChange((currentIndex - 1 + slides.length) % slides.length)}
                             size={30}>
@@ -226,8 +223,7 @@ function Home() {
                                 : (<p className='home-carousel-loading'>Loading...</p>)}
                         </div>
                     </div>
-                    )
-                    : (<p className='home-carousel-loading'>Loading...</p>)}
+
                 </div>
                 <div className='home-welcome-container'>
                     <h2 className='home-welcome-title'> Welcome to Bicheno</h2>

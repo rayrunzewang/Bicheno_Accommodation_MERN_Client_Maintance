@@ -9,10 +9,11 @@ function Accommodation() {
 
     /* ------ Fetch properties information ------ */
     useEffect(() => {
-        fetch(`${BASE_URL}/property`, { credentials: 'include' })
+        fetch(`${BASE_URL}/property/propertycard`, { credentials: 'include' })
             .then((res) => res.json())
             .then((data) => {
                 setProperties(data.properties); // Update to access 'properties' field in response
+                console.log(data.properties)
             })
             .catch((error) => console.error('Properties Fetch Error:', error));
     }, []);

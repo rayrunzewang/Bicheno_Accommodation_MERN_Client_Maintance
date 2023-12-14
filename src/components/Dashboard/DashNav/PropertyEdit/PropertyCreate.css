@@ -4,6 +4,7 @@
     padding: 10px;
     height: 500px;
     overflow: auto;
+    background: var(--grey);
 }
 
 .property-create-container h1 {
@@ -73,7 +74,7 @@
     margin: 10px 0;
     overflow: auto;
     height: fit-content;
-    max-height: 200px;
+    max-height: 400px;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;

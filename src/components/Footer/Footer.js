@@ -43,12 +43,12 @@ const Footer = () => {
                         <p><a href={contact.facebookURL}>Facebook</a></p>
                         <p> <a href={contact.instagramURL}>Instagram</a></p>
                     </div>
-                    <div className='column'>
+                    {/* <div className='column'>
                         <h4>Team</h4>
                         <p>
                             <Link to='/private'>Staff Login</Link>
                         </p>
-                    </div>
+                    </div> */}
                 </div>
                 <p className='baysidetechstudio'>&copy; Copyright 2023 <a target='_blank' href='https://www.baysidetechstudio.com'>Bayside Tech Studio</a>. All Rights Reserved.</p>
 

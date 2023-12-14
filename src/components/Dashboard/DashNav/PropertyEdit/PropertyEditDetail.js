@@ -12,65 +12,72 @@ const PropertyEditDetail = (props) => {
     const [imagePreviews, setImagePreviews] = useState([]);
     const [successMessage, setSuccessMessage] = useState(false);
     const [failMessage, setFailMessage] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
+    const [uploadStatusMessage, setUploadStatusMessage] = useState('');
 
     // 在您的代码文件中定义 getFileFromUrl 函数
-function getFileFromUrl(url, filename, mimeType) {
-    return fetch(url)
-      .then((response) => response.blob())
-      .then((blob) => new File([blob], filename, { type: mimeType }));
-  }
-  
-  // 然后在您的 useEffect 中使用它，如下所示：
-  
-  useEffect(() => {
-      axios.get(`${BASE_URL}/property/${props.property}`, { credentials: 'include' })
-          .then(response => {
-              if (response.data) {
-                  setProperty(response.data); // 直接设置 property
-                  const imageUrls = response.data.images.map(image => image.image_url);
-                  
-                  // 创建文件对象并存储在 selectedFiles 中
-                  const filePromises = imageUrls.map((url, index) => {
-                      return getFileFromUrl(url, `image${index}.jpg`, 'image/jpeg');
-                  });
-  
-                  Promise.all(filePromises)
-                      .then(files => {
-                          setSelectedFiles(files);
-                          setImagePreviews([...imageUrls]);
-                          console.log(imageUrls);
-                      })
-                      .catch(error => console.error('Error creating files:', error));
-              } else {
-                  console.error('Invalid response data:', response.data);
-              }
-          })
-          .catch(error => console.error(error));
-  }, [props.property]);
+    function getFileFromUrl(url, filename, mimeType) {
+        return fetch(url)
+            .then((response) => response.blob())
+            .then((blob) => new File([blob], filename, { type: mimeType }));
+    }
+
+    // 然后在您的 useEffect 中使用它，如下所示：
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/property/${props.property}`, { credentials: 'include' })
+            .then(response => {
+                if (response.data) {
+                    setProperty(response.data); // 直接设置 property
+                    const imageUrls = response.data.images.map(image => image.image_url);
+
+                    // 创建文件对象并存储在 selectedFiles 中
+                    const filePromises = imageUrls.map((url, index) => {
+                        return getFileFromUrl(url, `image${index}.jpg`, 'image/jpeg');
+                    });
+
+                    Promise.all(filePromises)
+                        .then(files => {
+                            setSelectedFiles(files);
+                            setImagePreviews([...imageUrls]);
+                            console.log(imageUrls);
+                        })
+                        .catch(error => console.error('Error creating files:', error));
+                } else {
+                    console.error('Invalid response data:', response.data);
+                }
+            })
+            .catch(error => console.error(error));
+    }, [props.property]);
 
     const handleDrop = (e) => {
         e.preventDefault();
         const files = Array.from(e.dataTransfer.files);
         setSelectedFiles([...selectedFiles, ...files]);
-
         previewFiles(files);
     }
 
     const previewFiles = (files) => {
         const previews = [];
-        files.forEach((file) => {
+        
+        function readFile(index) {
+            if (index >= files.length) {
+                setImagePreviews([...imagePreviews, ...previews]);
+                return;
+            }
+    
+            const file = files[index];
             const reader = new FileReader();
             reader.onload = (e) => {
                 const previewURL = e.target.result;
-                console.log(e.target.result);
                 previews.push(previewURL);
-                if (previews.length === files.length) {
-                    setImagePreviews([...imagePreviews, ...previews]);
-                }
+                readFile(index + 1);
             };
             reader.readAsDataURL(file);
-        });
-    }
+        }
+    
+        readFile(0);
+    };
 
 
 
@@ -107,6 +114,9 @@ function getFileFromUrl(url, filename, mimeType) {
 
     const handleUpdate = (e) => {
         e.preventDefault();
+        setIsUploading(true); 
+        setUploadStatusMessage('Uploading..., please do not refresh'); 
+
         const formData = new FormData();
 
         selectedFiles.forEach((file) => {
@@ -128,7 +138,9 @@ function getFileFromUrl(url, filename, mimeType) {
                 },
             })
             .then((response) => {
+                setIsUploading(false); 
                 console.log('Property updated secessfully:', response.data);
+                setUploadStatusMessage('Upload successfully'); 
                 setSuccessMessage(true);
                 setFailMessage(false);
             })
@@ -136,6 +148,8 @@ function getFileFromUrl(url, filename, mimeType) {
                 console.error('Failed to update property:', error);
                 setSuccessMessage(false)
                 setFailMessage(true);
+                setIsUploading(false); 
+                setUploadStatusMessage('Upload failed, please try again later'); 
             });
     };
 
@@ -193,10 +207,10 @@ function getFileFromUrl(url, filename, mimeType) {
                         <input className='property-edit-address' id='property-edit-address' type="text" placeholder='Address (required*)' value={property.address} required onChange={(e) => setProperty({ ...property, address: e.target.value })} />
                     </div>
                     <div>
-                        <textarea className='property-edit-link' id='property-edit-link' type="text" placeholder='Booking Link (required*)' value={property.link} cols="30" rows="10" required onChange={(e) => setProperty({ ...property, link: e.target.value })} />
+                        <textarea className='property-edit-link' id='property-edit-link' type="text" placeholder='Booking Link (required*)' value={property.link} cols="30" rows="1" required onChange={(e) => setProperty({ ...property, link: e.target.value })} />
                     </div>
                     <div>
-                        <textarea className='property-edit-description' id='property-edit-description' type="text" placeholder='Description (required*)' value={property.description} cols="30" rows="10" required onChange={(e) => setProperty({ ...property, description: e.target.value })} />
+                        <textarea className='property-edit-description' id='property-edit-description' type="text" placeholder='Description (required*)' value={property.description} cols="30" rows="20" required onChange={(e) => setProperty({ ...property, description: e.target.value })} />
                     </div>
 
                     <div className='images-edit-upload-area'
@@ -209,29 +223,31 @@ function getFileFromUrl(url, filename, mimeType) {
                         Sort the images below before uplodaing, with the cover image placed at the first position.</p>
                     <div className='images-edit-selected-area'>
                         <div className='images-edit-selected-area'>
-                        {selectedFiles.map((file, index) => (
-                            <div
-                                key={index}
-                                className='image-edit-div'
-                                draggable
-                                onDragStart={(e) => handleImageDragStart(e, index)}
-                                onDragOver={(e) => e.preventDefault()}
-                                onDrop={(e) => handleImageDrop(e, index)}
-                            >
-                                <img className='images-edit-selected-image' src={imagePreviews[index]} alt={file.name} />
-                                <button type='button' className='images-edit-selected-image-delete' onClick={() => handleDelete(index)} >
-                                    &times;
-                                </button>
-                            </div>
-                        ))}
+                            {selectedFiles.map((file, index) => (
+                                <div
+                                    key={index}
+                                    className='image-edit-div'
+                                    draggable
+                                    onDragStart={(e) => handleImageDragStart(e, index)}
+                                    onDragOver={(e) => e.preventDefault()}
+                                    onDrop={(e) => handleImageDrop(e, index)}
+                                >
+                                    <img className='images-edit-selected-image' src={imagePreviews[index]} alt={file.name} />
+                                    <button type='button' className='images-edit-selected-image-delete' onClick={() => handleDelete(index)} >
+                                        &times;
+                                    </button>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
+                {isUploading && <p className='success-message'>{uploadStatusMessage}</p>}
+                {failMessage && !isUploading && <p className='fail-message'>{uploadStatusMessage}</p> }
                 <Button label='Save' />
             </form>
             <Button onClick={handleDeleteProperty} label='Delete' />
             {successMessage && <Message message={'Updated successfully, click Ok to reload the page'} />}
-            {failMessage && <Message message={'Updated failed, an error occurred'} />}
+            {/* {failMessage && <Message message={'Updated failed, an error occurred'} />} */}
         </div>
     )
 };
