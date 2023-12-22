@@ -112,15 +112,16 @@ const ContactEdit = () => {
           />
         </div>
         <div>
-          <label  className='required-input' htmlFor='alternativePhoneNumber'>Phone Number 2:</label>
+          <label  className='required-input' htmlFor='alternativePhoneNumber'>Phone Number 2(not in use):</label>
         </div>
-        <div>
+        <div style={{background:'grey'}}>
           <input
             type='text'
             id='alternativePhoneNumber'
             name='alternativePhoneNumber'
             defaultValue={contact.alternativePhoneNumber}
             onChange={handleChange}
+            disabled
           />
         </div>
         <div>

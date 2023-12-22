@@ -33,7 +33,7 @@ const Footer = () => {
                         <address>
                             <h4>Contact</h4>
                             <p>Phone: <a href='tel:{formatPhoneNumber(contact.phoneNumber)}'>{contact.phoneNumber}</a></p>
-                            <p>Phone: <a href='tel:{formatPhoneNumber(contact.alternativePhoneNumber)}'>{contact.alternativePhoneNumber}</a></p>
+                            {/* <p>Phone: <a href='tel:{formatPhoneNumber(contact.alternativePhoneNumber)}'>{contact.alternativePhoneNumber}</a></p> */}
                             <p>Email: {contact.email}</p>
                             <p>Address: {contact.address}</p>
                         </address>
