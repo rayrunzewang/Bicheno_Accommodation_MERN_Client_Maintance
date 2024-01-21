@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Blog.css';
+// import { Link } from 'react-router-dom';
+// import './Blog.css';
 
 function Blog() {
-    const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    // const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-    const [posts, setPosts] = useState([]);
+    // const [posts, setPosts] = useState([]);
 
-    useState(() => {
-        fetch(`${BASE_URL}/posts`)
-            .then(res => res.json())
-            .then(data => setPosts(data))
-            .catch(error => console.error('Blog Posts Fetch Error:', error))
-    }, []);
+    // useState(() => {
+    //     fetch(`${BASE_URL}/posts`)
+    //         .then(res => res.json())
+    //         .then(data => setPosts(data))
+    //         .catch(error => console.error('Blog Posts Fetch Error:', error))
+    // }, []);
 
     return (
         <div className='blog-page'>
-            <h2 className='blog-page-title'>Article List</h2>
+            {/* <h2 className='blog-page-title'>Article List</h2>
             <div className='blog-page-container'>
                 <ul>
 
@@ -31,7 +31,15 @@ function Blog() {
                         </Link>
                     )))}
                 </ul>
-            </div>
+            </div> */}
+            <iframe
+                title="Embedded Content"
+                width="80%"
+                style={{ height: '800px', display: 'block', margin: '90px auto 10px' }}
+                src="https://baysidetechstudio.com/bichenoaccommodationavailability/"
+                frameborder="0"
+                allowFullScreen
+            ></iframe>
         </div>
     )
 }

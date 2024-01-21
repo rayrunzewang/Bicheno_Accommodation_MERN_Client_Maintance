@@ -63,14 +63,14 @@ const Header = () => {
                 <nav>
                     <ul className='user-container'>
                         <li><NavLink className='nav-link' to='/'>Home</NavLink></li>
-                        {/* <li><NavLink className='nav-link' to='/public/blog'>Blog</NavLink></li> */}
+                        <li><NavLink className='nav-link' to='/public/blog'>Availabilities</NavLink></li>
                         <li><NavLink className='nav-link' to='/public/accommodation'>Accommodation</NavLink></li>
-                        <li><a
+                        {/* <li><a
                             className='nav-link'
                             href='https://freycinetholidayhouses.com.au/availabilities/'
                             target='_blank'
                             rel='noopener noreferrer'
-                        >Booking</a></li>
+                        >Booking</a></li> */}
                     </ul>
                 </nav>
             </header>
@@ -85,15 +85,15 @@ const Header = () => {
                 <div className={isNavVisible ? 'nav-phone-screen' : 'nav-phone-screen hidden'}>
                     <ul>
                         <li><NavLink className='phone-screen-link' onClick={toggleNavVisibility} to='/'>Home</NavLink></li>
-                        {/* <li><NavLink className='phone-screen-link' onClick={toggleNavVisibility} to='/public/blog'>Blog</NavLink></li> */}
+                        <li><NavLink className='phone-screen-link' onClick={toggleNavVisibility} to='/public/blog'>Availabilities</NavLink></li>
                         <li><NavLink className='phone-screen-link' onClick={toggleNavVisibility} to='/public/accommodation'>Accommodation</NavLink></li>
-                        <li><a
+                        {/* <li><a
                             onClick={toggleNavVisibility}
                             className='phone-screen-link'
                             href='https://freycinetholidayhouses.com.au/availabilities/'
                             target='_blank'
                             rel='noopener noreferrer'
-                        >Booking</a></li>
+                        >Booking</a></li> */}
                     </ul>
                 </div>
             </div>
